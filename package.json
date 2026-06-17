@@ -1,0 +1,45 @@
+{
+  "name": "smarterrisk-playwright",
+  "version": "2.0.0",
+  "description": "Enterprise Playwright TypeScript automation framework for SmarterRisk",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:chromium": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:webkit": "playwright test --project=webkit",
+    "test:mobile": "playwright test --project=mobile-chrome",
+    "test:staging": "cross-env ENV=staging playwright test",
+    "test:prod": "cross-env ENV=production playwright test",
+    "test:login": "playwright test tests/auth/login.spec.ts",
+    "test:dashboard": "playwright test tests/ui/dashboard.spec.ts",
+    "test:orders": "playwright test tests/ui/orders.spec.ts",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:regression": "playwright test --grep @regression",
+    "test:ci": "cross-env CI=true playwright test",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "report": "playwright show-report reports/html",
+    "codegen": "playwright codegen https://ares.smarterrisk.app/",
+    "trace": "playwright show-trace"
+  },
+  "keywords": [
+    "playwright",
+    "typescript",
+    "automation",
+    "testing"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@faker-js/faker": "^10.4.0",
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.6.0",
+    "allure-playwright": "^3.7.1",
+    "cross-env": "^10.1.0",
+    "dotenv": "^17.4.2",
+    "eslint": "^10.2.1",
+    "typescript": "^5.9.3"
+  }
+}

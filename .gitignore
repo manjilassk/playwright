@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Playwright artifacts
+test-results/
+playwright-report/
+reports/
+
+# Auth state (contains session tokens — never commit this)
+tests/fixtures/auth-state.json
+
+# Environment files (contain credentials — never commit these)
+.env
+.env.staging
+.env.production
+.env.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# TypeScript build info
+*.tsbuildinfo
