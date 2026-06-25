@@ -40,13 +40,13 @@ setup('authenticate', async ({ page }) => {
 
   await loginBtn.click();
 
-  // Wait for navigation to the dashboard after login
-  await page.waitForURL('**/dashboard**', { timeout: 30_000 });
+  // Wait for navigation — admin accounts land on /admin, regular users on /dashboard
+  await page.waitForURL(/\/(dashboard|admin)/, { timeout: 30_000 });
 
-  // Confirm we are on the dashboard
-  await expect(page.getByRole('heading', { name: /dashboard/i })).toBeVisible({
-    timeout: 15_000,
-  });
+  // Confirm login succeeded — check for any post-login heading
+  await expect(
+    page.getByRole('heading', { name: /dashboard|admin|home/i })
+  ).toBeVisible({ timeout: 15_000 });
 
   // Save the authenticated browser state
   await page.context().storageState({ path: STORAGE_STATE });

@@ -92,7 +92,8 @@ export class LoginPage extends BasePage {
     await this.fillEmail(email);
     await this.fillPassword(password);
     await this.clickLogin();
-    await this.page.waitForURL('**/dashboard**', { timeout: 30_000 });
+    // Admin accounts land on /admin, regular users on /dashboard
+    await this.page.waitForURL(/\/(dashboard|admin)/, { timeout: 30_000 });
     await this.waitHelper.waitForPageLoader();
   }
 
